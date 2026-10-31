@@ -190,6 +190,22 @@ public class MainActivity extends Activity {
         }
         public int getItemCount() { return apps.size(); }
     }
+        @Override public boolean onKeyDown(int keyCode, KeyEvent e) {
+        String pk = null;
+        switch (e.getScanCode()) {
+            case 242: pk = "com.netflix.ninja"; break;
+            case 752: pk = "com.amazon.amazonvideo.livingroom"; break;
+            case 245: pk = "com.google.android.youtube.tv"; break;
+        }
+        if (pk != null) {
+            if (e.getRepeatCount() == 0) {
+                Intent i = getPackageManager().getLeanbackLaunchIntentForPackage(pk);
+                if (i != null) open(i);
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, e);
+    }
 
     @Override public void onBackPressed() { /* stay on Home */ }
 }
