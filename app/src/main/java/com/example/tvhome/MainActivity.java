@@ -190,7 +190,8 @@ public class MainActivity extends Activity {
         }
         public int getItemCount() { return apps.size(); }
     }
-        @Override public boolean onKeyDown(int keyCode, KeyEvent e) {
+
+    @Override public boolean onKeyDown(int keyCode, KeyEvent e) {
         String pk = null;
         switch (e.getScanCode()) {
             case 242: pk = "com.netflix.ninja"; break;
